@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Examen2023</string>
+    <string name="strConcat">CONCATENAR</string>
+    <string name="strTellMe">DIME UN NÚMERO</string>
+    <string name="strPlus">+</string>
+    <string name="strSend">ENVIAR</string>
+    <string name="strNamecorn">Nombrecornio:</string>
+    <string name="strPantasy">Pantasy</string>
+    <string name="strAlopigus">Alopigus</string>
+    <string name="strDarnasus">Darnasus</string>
+    <string name="strMercromina">Mercromina</string>
+
+</resources>
