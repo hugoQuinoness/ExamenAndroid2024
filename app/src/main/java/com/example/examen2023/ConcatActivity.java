@@ -25,6 +25,8 @@ Button boton;
         t1.setText("Tranquil@");
         t2.setText("Todo va a ir bien");
 
+        boton.setOnClickListener(this);
+
     }
 
     @Override

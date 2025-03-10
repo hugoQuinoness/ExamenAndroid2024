@@ -11,14 +11,15 @@ import android.widget.TextView;
 public class NumberActivity extends AppCompatActivity implements View.OnClickListener{
     TextView txt;
     Button bPlus, bSend;
+    int number = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number);
 
-
         txt=findViewById(R.id.tNumber);
-        txt.setText(""+42);
+        txt.setText(""+number);
 
         bPlus=findViewById(R.id.bNumberPlus);
         bPlus.setOnClickListener(this);
@@ -31,13 +32,14 @@ public class NumberActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.bNumberPlus:
-                txt.setText(""+Integer.parseInt(txt.getText().toString())/2);
+                number++;
+                txt.setText(String.valueOf(number));
                 break;
 
             case R.id.bNumberSend:
-                Intent i=getIntent();
-                i.putExtra("Número",42);
-                this.setResult(RESULT_CANCELED,i);
+                Intent resultIntent = new Intent();
+                resultIntent.putExtra("Número", number);
+                setResult(RESULT_OK, resultIntent);
                 finish();
                 break;
 

@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button bNumber,bConcat;
+    Button bNumber,bConcat, bButton3;
     ImageView iUnicorn;
     TextView txt,tUnicorn;
     int unicornio=1;
@@ -28,6 +28,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         bConcat=findViewById(R.id.bMainConcat);
         bConcat.setOnClickListener(this);
+
+        bButton3 = findViewById(R.id.button3);
+        bButton3.setOnClickListener(this);
 
         txt=findViewById(R.id.tMainNumero);
         tUnicorn=findViewById(R.id.tMainUnicorn);
@@ -47,33 +50,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.iMain:
-                Intent in=new Intent(this, UnicornActivity.class);
+                Intent in = new Intent(this, UnicornActivity.class);
                 in.putExtra("nombre", tUnicorn.getText().toString());
-                in.putExtra("unicornio",unicornio);
+                in.putExtra("unicornio", unicornio);
                 startActivity(in);
                 break;
 
-
         }
-
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
+
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(resultCode==RESULT_OK && requestCode==20 && data!=null){
-            int resultado=data.getExtras().getInt("Número");
-            txt.setText(""+"Sorpresa!");
+        if (resultCode == RESULT_OK && requestCode == CODIGO_ENVIO && data != null) {
+            int resultado = data.getExtras().getInt("Número");
+            txt.setText(String.valueOf(resultado));
         }
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        unicornio=(int)(Math.random()*4+1);
-        switch(unicornio){
+
+        unicornio = (int)(Math.random() * 4 + 1);
+
+        switch (unicornio) {
             case 1:
                 iUnicorn.setImageDrawable(getResources().getDrawable(R.drawable.uni));
                 break;
@@ -87,7 +90,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 iUnicorn.setImageDrawable(getResources().getDrawable(R.drawable.uni3));
                 break;
         }
-        iUnicorn.setImageDrawable(getResources().getDrawable(R.drawable.uni));
-        unicornio=1;
     }
 }
